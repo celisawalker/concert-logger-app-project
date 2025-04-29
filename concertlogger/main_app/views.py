@@ -1,4 +1,5 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
+from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from .models import Concert
@@ -6,3 +7,30 @@ from .models import Concert
 
 class Home(LoginView):
     template_name = 'home.html'
+
+
+def about(request):
+    about_details = 'Take a walk down memory lane with your digital concert scrapbook. Relive The Eras Tour, Love on Tour and the Renaissance Tour all in one place.'
+    return render(request, 'about.html', {
+        'about': about_details
+    })
+
+def concert_index(request):
+    concerts = Concert.objects.all()
+    return render(request, 'concerts/index.html', {'concerts': concerts})
+
+def concert_detail(request, concert_id):
+    concerts = Concert.objects.get(id=concert_id)
+    return render(request, 'concerts/detail.html', {
+        'concerts': concerts
+    })
+
+class ConcertCreate(CreateView):
+    model = Concert
+    fields = '__all__'
+
+    # def form_valid(self, form):
+    #     # Assign the logged in user (self.request.user)
+    #     form.instance.user = self.request.user  # form.instance is the cat
+    #     # Let the CreateView do its job as usual
+    #     return super().form_valid(form)

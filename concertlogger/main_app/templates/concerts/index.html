@@ -1,0 +1,27 @@
+{% extends 'base.html' %}
+{% load static %}
+
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/concerts/concert-index.css' %}" />
+{% endblock %}
+
+{% block content %}
+<section class="page-header">
+    <a href="{% url 'concert-create' %}">Add a Concert</a>
+</section>
+
+<section class="card-container">
+    {% for concert in concerts %}
+    <div class="card">
+        <!-- add concert create link -->
+            <div class="card-content">
+                <h2 class="card-title">{{concert.artist_name}}</h2>
+                    <p>{{ concert.date }} at {{ concert.venue }}</p>
+                    <p>Seat: {{concert.seat}}</p>
+            </div>
+        </a>
+    </div>
+    {% endfor %}
+</section>
+
+{% endblock %}
