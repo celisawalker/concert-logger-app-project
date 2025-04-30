@@ -1,8 +1,9 @@
 from django.shortcuts import render, redirect
 from django.views.generic.edit import CreateView, UpdateView, DeleteView
+from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
-from .models import Concert
+from .models import Concert, Artist
 # Create your views here.
 
 class Home(LoginView):
@@ -28,6 +29,7 @@ def concert_detail(request, concert_id):
 class ConcertCreate(CreateView):
     model = Concert
     fields = '__all__'
+    success_url = '/concerts/'
 
     # def form_valid(self, form):
     #     # Assign the logged in user (self.request.user)
@@ -44,3 +46,22 @@ class ConcertUpdate(UpdateView):
 class ConcertDelete(DeleteView):
     model = Concert
     success_url = '/concerts/'
+
+class ArtistCreate(CreateView):
+    model = Artist
+    fields = '__all__'
+    success_url = '/artists/'
+
+class ArtistList(ListView):
+    model = Artist
+
+class ArtistDetail(DetailView):
+    model = Artist
+
+class ArtistUpdate(UpdateView):
+    model = Artist
+    fields = ['name', 'genre']
+
+class ArtistDelete(DeleteView):
+    model = Artist
+    success_url = '/artists/'

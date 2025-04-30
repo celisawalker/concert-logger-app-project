@@ -8,5 +8,7 @@ class Concert(models.Model):
     venue = models.CharField(max_length=100)
     seat = models.CharField(max_length=20)
 
-
+class Artist(models.Model):
+    name = models.CharField(max_length=100)
+    genre = models.CharField(max_length=50)
     

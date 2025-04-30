@@ -1,0 +1,17 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/artists/artist-detail.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<div class="card">
+  <div class="card-content">
+    <h2>{{ artist.name }}</h2>
+    <p>{{ artist.category }}</p>
+  </div>
+</div>
+<a href="{% url 'artist-update' artist.id %}" class="btn warn">Edit</a>
+<a href="{% url 'artist-delete' artist.id %}" class="btn danger">Delete</a>
+
+{% endblock %}

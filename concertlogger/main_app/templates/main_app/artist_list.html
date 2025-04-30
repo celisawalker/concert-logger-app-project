@@ -1,0 +1,23 @@
+{% extends 'base.html' %} 
+{% load static %} 
+{% block head %}
+<link rel="stylesheet" href="{% static 'css/artists/artist-index.css' %}" />
+{% endblock %} 
+{% block content %}
+
+<section class="page-header">
+  <h1>Your Favorite Artists</h1>
+    <section class="card-container">
+    {% for artist in artist_list %}
+    <a href="{% url 'artist-detail' item.id %}">
+      <div class="card-content">
+        <h2>{{ artist.name }}</h2>
+        <p> {{ artist.genre }}</p>
+      </div>
+    </a>
+    {% endfor %}
+     </section>
+
+</section>
+
+{% endblock %}
