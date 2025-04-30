@@ -20,9 +20,9 @@ def concert_index(request):
     return render(request, 'concerts/index.html', {'concerts': concerts})
 
 def concert_detail(request, concert_id):
-    concerts = Concert.objects.get(id=concert_id)
+    concert = Concert.objects.get(id=concert_id)
     return render(request, 'concerts/detail.html', {
-        'concerts': concerts
+        'concert': concert
     })
 
 class ConcertCreate(CreateView):
@@ -34,3 +34,13 @@ class ConcertCreate(CreateView):
     #     form.instance.user = self.request.user  # form.instance is the cat
     #     # Let the CreateView do its job as usual
     #     return super().form_valid(form)
+
+class ConcertUpdate(UpdateView):
+    model = Concert
+    fields =  '__all__'
+
+    success_url = '/concerts/'
+
+class ConcertDelete(DeleteView):
+    model = Concert
+    success_url = '/concerts/'

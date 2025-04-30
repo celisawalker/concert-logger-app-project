@@ -13,7 +13,7 @@
 <section class="card-container">
     {% for concert in concerts %}
     <div class="card">
-        <!-- add concert create link -->
+        <a href="/concerts/{{concert.id}}">
             <div class="card-content">
                 <h2 class="card-title">{{concert.artist_name}}</h2>
                     <p>{{ concert.date }} at {{ concert.venue }}</p>
