@@ -6,10 +6,11 @@
 {% block content %}
 
 <section class="page-header">
+  <a href="{% url 'artist-create' %}">Add an Artist</a>
   <h1>Your Favorite Artists</h1>
     <section class="card-container">
     {% for artist in artist_list %}
-    <a href="{% url 'artist-detail' item.id %}">
+    <a href="{% url 'artist-detail' artist.id %}">
       <div class="card-content">
         <h2>{{ artist.name }}</h2>
         <p> {{ artist.genre }}</p>

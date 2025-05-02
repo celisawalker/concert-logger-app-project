@@ -8,6 +8,7 @@
 {% block content %}
 <section class="page-header">
     <a href="{% url 'concert-create' %}">Add a Concert</a>
+    <a href="{% url 'artist-create' %}">Add an Artist</a>
 </section>
 
 <section class="card-container">
@@ -22,6 +23,16 @@
         </a>
     </div>
     {% endfor %}
+</section>
+
+<section class="artist-container">
+    <div class="card">
+        {% for artist in artists %}
+            {% if artist.top_five == True %}
+            <p>{{artist.name}}</p>
+            {% endif %}
+        {% endfor %}
+    </div>
 </section>
 
 {% endblock %}

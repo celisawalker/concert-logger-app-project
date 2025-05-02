@@ -18,7 +18,11 @@ def about(request):
 
 def concert_index(request):
     concerts = Concert.objects.all()
-    return render(request, 'concerts/index.html', {'concerts': concerts})
+    artists = Artist.objects.all()
+    return render(request, 'concerts/index.html', {
+        'concerts': concerts,
+        'artists': artists,
+        })
 
 def concert_detail(request, concert_id):
     concert = Concert.objects.get(id=concert_id)
