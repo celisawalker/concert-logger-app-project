@@ -1,7 +1,19 @@
+/* * {
+    font-size: 18px;
+} */
+
 .form-container {
     display: flex;
     flex-direction: column;
+    border: 1px solid black;
+    border-radius: 5px;
+    padding: 20px;
     width: 100%;
+  }
+
+  h1{
+    font-size: 20px;
+    text-align: center;
   }
   
   table {
@@ -15,7 +27,6 @@
     padding: 6px 20px 0 0;
     font-weight: normal;
     vertical-align: top;
-    font-size: var(--font-reg);
   }
   
   td {
@@ -25,14 +36,22 @@
   td > * {
     width: 100%;
     padding: 2px 4px;
-    font-size: var(--font-l);
+    font-size: 12px;
   }
   
+  input, select{
+    border-radius: 7px;
+  }
+
   td > textarea {
-    height: calc(4 * var(--font-l) + 8px);
+    height: calc(4 * 1.8rem + 8px);
     font-family: inherit;
   }
-  
+
+  label{
+    font-size: 16px;
+  }
+
   .btn {
     align-self: flex-end;
     margin-right: 40px;
