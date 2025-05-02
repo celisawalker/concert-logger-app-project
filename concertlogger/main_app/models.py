@@ -7,7 +7,10 @@ class Concert(models.Model):
     artist_name = models.CharField(max_length=100)
     date = models.DateField('Event Date')
     venue = models.CharField(max_length=100)
+    location = models.CharField(max_length=50)
     seat = models.CharField(max_length=20)
+    review = models.TextField()
+    image = models.FileField(null=True, blank=True)
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Artist(models.Model):
