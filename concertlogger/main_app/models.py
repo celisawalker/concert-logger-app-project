@@ -9,8 +9,8 @@ class Concert(models.Model):
     venue = models.CharField(max_length=100)
     location = models.CharField(max_length=50)
     seat = models.CharField(max_length=20)
-    review = models.TextField()
-    image = models.FileField(null=True, blank=True)
+    review = models.TextField(blank=True, null=True)
+    image = models.ImageField(blank=True, null=True, upload_to='images/')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
 class Artist(models.Model):

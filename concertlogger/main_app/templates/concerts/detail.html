@@ -11,7 +11,15 @@
     <div class="concert-details">
         <h1>{{ concert.artist_name }}</h1>
         <h3>{{ concert.date }} at {{ concert.venue }}</h3>
+        <p> {{concert.location}} </p>
         <p>Seat: {{ concert.seat }} </p>
+        <p>Review: {{concert.review}} </p>
+        <h3>Photos</h3>
+        <div class="polaroid">
+            <img src="{{concert.image.url}}" alt="image from the {{concert.artist_name}} concert"><div class="container">
+                <p> {{concert.artist_name}} at {{concert.venue}}</p>
+            </div>
+        </div>
         <div class="concert-actions">
             <a href="{% url 'concert-update' concert.id %}" class="btn warn">Edit</a>
             <a href="{% url 'concert-delete' concert.id %}" class="btn danger">Delete</a>

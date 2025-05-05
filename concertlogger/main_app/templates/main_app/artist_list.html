@@ -7,18 +7,20 @@
 
 <section class="page-header">
   <a href="{% url 'artist-create' %}">Add an Artist</a>
-  <h1>Your Favorite Artists</h1>
-    <section class="card-container">
-    {% for artist in artist_list %}
-    <a href="{% url 'artist-detail' artist.id %}">
-      <div class="card-content">
-        <h2>{{ artist.name }}</h2>
-        <p> {{ artist.genre }}</p>
-      </div>
-    </a>
-    {% endfor %}
-     </section>
-
 </section>
+  
+<section class="card-container">
+  <h1>Your Favorite Artists</h1>
+  {% for artist in artist_list %}
+  <a href="{% url 'artist-detail' artist.id %}">
+    <div class="card-content">
+      <p class="artist-name">{{ artist.name }} • <span class="genre">{{ artist.genre }}</span></p>
+
+    </div>
+  </a>
+  {% endfor %}
+</section>
+
+
 
 {% endblock %}
