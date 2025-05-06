@@ -1,7 +1,10 @@
+body{
+    height: 100vh;
+    margin-bottom: 30px;
+}
+
 main{
     width: 100vw;
-    margin-bottom: 30px;
-    background-color: rgb(238, 234, 220);
 }
 
 .page-header{
@@ -36,14 +39,18 @@ main{
     flex-wrap: wrap;
     
 }
-
+.card-contents{
+    display: flex;
+    flex-direction: column;
+}
 .artist-blurb{
     text-align: center;
 }
 
 .artist-card {
-    width: 100vh;
+    width: 80%;
     margin: 0 auto;
+    padding: 5px;
     display: flex;
     flex-direction: row;
     justify-content: space-evenly;
@@ -52,7 +59,13 @@ main{
     align-items: center;
     box-shadow: var(--card-box-shadow);
 }
-  
+
+.artist-container{
+    padding: 20px 0;
+    /* margin-left: 10px;
+    margin-right: 10px; */
+}
+
   .card-content {
     padding: 10px;
     height: 180px;
