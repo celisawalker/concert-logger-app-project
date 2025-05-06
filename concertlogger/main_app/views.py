@@ -4,6 +4,7 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from .models import Concert, Artist
+from .tracks import get_songs_by_artist
 # Create your views here.
 
 class Home(LoginView):
@@ -19,6 +20,19 @@ def about(request):
 def concert_index(request):
     concerts = Concert.objects.all()
     artists = Artist.objects.all()
+
+    def get_songs(artist_name):
+        songs = []
+        results = get_songs_by_artist(artist_name)
+
+        for song in results:
+            songs.append(song["name"])
+        return songs
+    
+    for artist in artists:
+        artist.top_songs = get_songs(artist.name)[:5]
+
+
     return render(request, 'concerts/index.html', {
         'concerts': concerts,
         'artists': artists,
@@ -69,3 +83,4 @@ class ArtistUpdate(UpdateView):
 class ArtistDelete(DeleteView):
     model = Artist
     success_url = '/artists/'
+
