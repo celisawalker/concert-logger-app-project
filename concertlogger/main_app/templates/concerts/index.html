@@ -17,7 +17,9 @@
         <a href="/concerts/{{concert.id}}">
             <div class="card-content">
                 <h2 class="card-title">{{concert.artist_name}}</h2>
-                    <p>{{ concert.date }} at {{ concert.venue }}</p>
+                    <p>{{ concert.date }} 
+                    <p>at</p> 
+                    <p>{{ concert.venue }}</p>
                     <p>{{ concert.location }}</p>
                     <p>Seat: {{concert.seat}}</p>
             </div>
