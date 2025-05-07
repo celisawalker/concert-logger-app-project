@@ -14,4 +14,5 @@ urlpatterns = [
     path('artists/', views.ArtistList.as_view(), name='artist-index'),
     path('artists/<int:pk>/update/', views.ArtistUpdate.as_view(), name='artist-update'),
     path('artists/<int:pk>/delete/', views.ArtistDelete.as_view(), name='artist-delete'),
+    path('accounts/signup/', views.signup, name='signup'),
 ]

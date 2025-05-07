@@ -3,20 +3,38 @@ from django.views.generic.edit import CreateView, UpdateView, DeleteView
 from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
+from django.contrib.auth.forms import UserCreationForm
 from .models import Concert, Artist
 from .tracks import get_songs_by_artist
+from django.contrib.auth.decorators import login_required
+from django.contrib.auth.mixins import LoginRequiredMixin
 # Create your views here.
 
 class Home(LoginView):
     template_name = 'home.html'
 
+def signup(request):
+    error_message = ''
+    if request.method == 'POST':
+        form = UserCreationForm(request.POST)
+        if form.is_valid():
+            user = form.save()
+            login(request, user)
+            return redirect ('concert-index')
+        else:
+            error_message = 'Invalid login credentials - try again'
+    form = UserCreationForm()
+    context = {'form': form, 'error_message': error_message}
+    return render(request, 'signup.html', context)
 
+@login_required
 def about(request):
     about_details = 'Take a walk down memory lane with your digital concert scrapbook. Relive The Eras Tour, Love on Tour and the Renaissance Tour all in one place.'
     return render(request, 'about.html', {
         'about': about_details
     })
 
+@login_required
 def concert_index(request):
     concerts = Concert.objects.all()
     artists = Artist.objects.all()
@@ -38,13 +56,14 @@ def concert_index(request):
         'artists': artists,
         })
 
+@login_required
 def concert_detail(request, concert_id):
     concert = Concert.objects.get(id=concert_id)
     return render(request, 'concerts/detail.html', {
         'concert': concert
     })
 
-class ConcertCreate(CreateView):
+class ConcertCreate(LoginRequiredMixin, CreateView):
     model = Concert
     fields = '__all__'
     success_url = '/concerts/'
@@ -55,32 +74,32 @@ class ConcertCreate(CreateView):
     #     # Let the CreateView do its job as usual
     #     return super().form_valid(form)
 
-class ConcertUpdate(UpdateView):
+class ConcertUpdate(LoginRequiredMixin, UpdateView):
     model = Concert
     fields =  '__all__'
 
     success_url = '/concerts/'
 
-class ConcertDelete(DeleteView):
+class ConcertDelete(LoginRequiredMixin, DeleteView):
     model = Concert
     success_url = '/concerts/'
 
-class ArtistCreate(CreateView):
+class ArtistCreate(LoginRequiredMixin, CreateView):
     model = Artist
     fields = '__all__'
     success_url = '/artists/'
 
-class ArtistList(ListView):
+class ArtistList(LoginRequiredMixin, ListView):
     model = Artist
 
-class ArtistDetail(DetailView):
+class ArtistDetail(LoginRequiredMixin, DetailView):
     model = Artist
 
-class ArtistUpdate(UpdateView):
+class ArtistUpdate(LoginRequiredMixin, UpdateView):
     model = Artist
     fields = ['name', 'genre']
 
-class ArtistDelete(DeleteView):
+class ArtistDelete(LoginRequiredMixin, DeleteView):
     model = Artist
     success_url = '/artists/'
 
