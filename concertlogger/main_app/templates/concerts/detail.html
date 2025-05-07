@@ -12,7 +12,8 @@
         <h3>{{ concert.date }} at {{ concert.venue }}</h3>
         <p> {{concert.location}} </p>
         <p>Seat: {{ concert.seat }} </p>
-        <p>Review: {{concert.review}} </p>
+        <h3>Review:</h3>
+        <p>{{concert.review}} </p>
         <h3>Photos</h3>
         <div class="polaroid">
             <img src="{{concert.image.url}}" alt="image from the {{concert.artist_name}} concert"><div class="container">
