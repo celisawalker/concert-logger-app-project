@@ -36,8 +36,8 @@ def about(request):
 
 @login_required
 def concert_index(request):
-    concerts = Concert.objects.all()
-    artists = Artist.objects.all()
+    concerts = Concert.objects.filter(user=request.user)
+    artists = Artist.objects.filter(user=request.user)
 
     def get_songs(artist_name):
         songs = []
@@ -63,6 +63,7 @@ def concert_detail(request, concert_id):
         'concert': concert
     })
 
+
 class ConcertCreate(LoginRequiredMixin, CreateView):
     model = Concert
     fields = '__all__'
@@ -73,6 +74,7 @@ class ConcertCreate(LoginRequiredMixin, CreateView):
         form.instance.user = self.request.user  # form.instance is the cat
         # Let the CreateView do its job as usual
         return super().form_valid(form)
+    
 
 class ConcertUpdate(LoginRequiredMixin, UpdateView):
     model = Concert
@@ -91,6 +93,11 @@ class ArtistCreate(LoginRequiredMixin, CreateView):
 
 class ArtistList(LoginRequiredMixin, ListView):
     model = Artist
+
+    def get_queryset(self):
+        user = self.request.user
+        queryset = Artist.objects.filter(user=user)
+        return queryset
 
 class ArtistDetail(LoginRequiredMixin, DetailView):
     model = Artist
