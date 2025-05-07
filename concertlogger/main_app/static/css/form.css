@@ -5,7 +5,7 @@
 .form-container {
     display: flex;
     flex-direction: column;
-    border: 1px solid black;
+    border: 2px dotted rgb(144, 142, 142);
     border-radius: 5px;
     padding: 20px;
     width: 100%;
@@ -37,10 +37,6 @@
     width: 100%;
     padding: 2px 4px;
     font-size: 12px;
-  }
-  
-  input, select{
-    border-radius: 7px;
   }
 
   td > textarea {

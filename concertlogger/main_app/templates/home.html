@@ -7,13 +7,22 @@
 
 {% block content %}
 
-<section class="logo-container">
+<div class="hero"></div>
 
-</section>
+<div class="hero-blurb">
+    <h1>Welcome to your Gig Diary!</h1>
+    <p>
+        Have you ever gone to a concert and wished that you could remember every part of it, only to realize you start forgetting details of what the artist was wearing as soon as you leave the venue? 
+        We spend so much time waiting for and preparing for the show that it's hard to take it all in when it finally comes. If only there was a way to record your experience in some osrt of online diary....
+    </p>
+    <p>
+        That's where we come in! Gig Diary is your online scrapbook for all of your concert needs. Record the artist, date, venue, your seat location and even leave a review. Let future you know if you liked that seat
+        or if the parking was a pain in the butt. You can even add photos to your review to remind yourself of how much fun you had. Just because the show is over, doesn't mean the fun isn't. Keep it going with Gig Diary.
+    </p>
+</div>
 
 {% if not user.is_authenticated %}
 <section>
-    
     <h1>Login</h1>
     <form action="{% url 'home' %}" method="post" class="login">
         {% csrf_token %}
