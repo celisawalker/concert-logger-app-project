@@ -10,7 +10,7 @@
 Gig Diary is a full stack concert logger app geared towards concertgoers who wish to log their experiences in a digital scrapbook. The idea was borne out of a conversation with a friend where we shared screenshots from our phone's notes app listing the Harry Styles concerts that we have attended. Gig Diary makes it easier for fans to easily see which concerts they have attended and review their experiences of those events.
 
 ## Live Demo 
-Check out Gig Diary [here](https://alarmmate.netlify.app/).
+Check out Gig Diary [here](https://gig-diary-91531bd45d38.herokuapp.com/).
 
 ## Planning Materials
 For the planning of Gig Diary, I created an ERD chart, wireframes, a routing chart and user stories. Planning materials can be found here on [Trello](https://trello.com/b/cNU9sf5Z/concert-tracker-app)
