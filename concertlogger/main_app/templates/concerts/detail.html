@@ -1,5 +1,4 @@
 {% extends 'base.html' %}
-
 {% load static %}
 
 {% block head %}
@@ -21,8 +20,8 @@
             </div>
         </div>
         <div class="concert-actions">
-            <a href="{% url 'concert-update' concert.id %}" class="btn warn">Edit</a>
-            <a href="{% url 'concert-delete' concert.id %}" class="btn danger">Delete</a>
+            <a href="{% url 'concert-update' concert.id %}" class="btn">Edit</a>
+            <a href="{% url 'concert-delete' concert.id %}" class="btn">Delete</a>
         </div>
     </div>
 </section>
