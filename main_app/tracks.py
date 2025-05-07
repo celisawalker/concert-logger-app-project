@@ -53,13 +53,3 @@ def get_songs_by_artist(artist_name):
     json_result = json.loads(result.content)["tracks"]
 
     return json_result
-    
-
-
-# result = search_for_artist(token, "harry styles")
-# artist_id = result["id"]
-# songs = get_songs_by_artist(token, artist_id)
-# print(songs)
-
-# for idx, song in enumerate(songs):
-#     print(f"{idx + 1}.{song['name']}")

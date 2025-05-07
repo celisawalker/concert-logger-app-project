@@ -38,6 +38,7 @@
         {% for artist in artists %}
             {% if artist.top_five == True %}
             <div class="card-contents">
+                <img src="{% static 'images/full-logo-framed.svg' %}" alt="spotify log" height="auto" width="100">
                 <h3>{{artist.name}}</h3>
                 <ol>
                     {% for song in artist.top_songs %}
