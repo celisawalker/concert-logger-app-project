@@ -39,16 +39,18 @@ def concert_index(request):
     concerts = Concert.objects.filter(user=request.user)
     artists = Artist.objects.filter(user=request.user)
 
-    def get_songs(artist_name):
-        songs = []
-        results = get_songs_by_artist(artist_name)
+#WIP - cannot host on heroku without spotify permissions; reassessing whether to keep this or add new feature
 
-        for song in results:
-            songs.append(song["name"])
-        return songs
+    # def get_songs(artist_name):
+    #     songs = []
+    #     results = get_songs_by_artist(artist_name)
+
+    #     for song in results:
+    #         songs.append(song["name"])
+    #     return songs
     
-    for artist in artists:
-        artist.top_songs = get_songs(artist.name)[:5]
+    # for artist in artists:
+    #     artist.top_songs = get_songs(artist.name)[:5]
 
 
     return render(request, 'concerts/index.html', {

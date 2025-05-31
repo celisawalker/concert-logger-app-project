@@ -31,19 +31,18 @@
 
 <section class="artist-container">
     <div class="artist-blurb">
-        <h3>Your Top 5 Artists</h3>
-        <p>Your top five artists' current top songs are listed below. Do the top five tracks from your fave artists make <em>your</em> top five?</p>
+        <h3>Your Top Artists</h3>
     </div>
     <div class="artist-card">
         {% for artist in artists %}
             {% if artist.top_five == True %}
             <div class="card-contents">
                 <h3>{{artist.name}}</h3>
-                <ol>
+                <!-- <ol>
                     {% for song in artist.top_songs %}
                     <li>{{ song }}</li>
                     {% endfor %}
-                </ol>
+                </ol> -->
             </div>
             {% endif %}
         {% endfor %}
