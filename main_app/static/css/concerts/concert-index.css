@@ -30,6 +30,9 @@ main {
 .card {
     width: 275px;
     margin: 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
 
 .card-container {
@@ -54,7 +57,7 @@ main {
 }
 
 .artist-card {
-    width: 80%;
+    width: 50%;
     margin: 0 auto;
     padding: 20px;
     display: flex;
