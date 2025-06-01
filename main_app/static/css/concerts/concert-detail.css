@@ -11,13 +11,20 @@
     flex-direction: column;
 }
 
-img{
+.concert-img{
     width: 100%;
     height: auto;
 }
 
-.concert-details{
+.concert-container{
     display: flex;
+    justify-content: center;
+    padding: 20px ;
+}
+.concert-details{
+    width: 75%;
+    display: flex;
+    margin: 0;
     flex-direction: column;
     align-items: center;
     justify-content: center;
