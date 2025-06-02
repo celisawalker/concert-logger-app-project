@@ -61,6 +61,7 @@ def concert_index(request):
 @login_required
 def concert_detail(request, concert_id):
     concert = Concert.objects.get(id=concert_id)
+
     return render(request, 'concerts/detail.html', {
         'concert': concert
     })
