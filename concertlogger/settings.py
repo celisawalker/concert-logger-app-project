@@ -20,6 +20,11 @@ load_dotenv()
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
 
+# cloudinary imports
+
+# import cloudinary 
+# import cloudinary.uploader
+# import cloudinary.api
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -44,6 +49,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'cloudinary',
 ]
 
 MIDDLEWARE = [
@@ -151,3 +157,11 @@ LOGIN_REDIRECT_URL = 'concert-index'
 LOGOUT_REDIRECT_URL = 'home'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
+
+# Cloudinary - Django integration 
+
+cloudinary.config(
+    cloud_name = "dprxapkef",
+    api_key = "761684916978745",
+    api_secret = "WK5KhGlivCUvz_fqSfCnVVsZRTs",
+)

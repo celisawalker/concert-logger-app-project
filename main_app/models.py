@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import User
+# from cloudinary.models import CloudinaryField
 
 
 
@@ -11,7 +12,7 @@ class Concert(models.Model):
     location = models.CharField(max_length=50)
     seat = models.CharField(max_length=20)
     review = models.TextField(blank=True, null=True)
-    image = models.ImageField(blank=True, null=True, upload_to='images/')
+    image = models.CloudinaryField(blank=True, null=True, upload_to='images/')
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
@@ -27,3 +28,7 @@ class Artist(models.Model):
     def __str__(self):
         return self.name
     
+# class library(models.Model):
+#     title  = models.CharField(max=100)
+#     description = models.CharField(max_length=250)
+#     image = CloudinaryField("image")
