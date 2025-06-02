@@ -22,9 +22,9 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 # cloudinary imports
 
-# import cloudinary 
-# import cloudinary.uploader
-# import cloudinary.api
+import cloudinary 
+import cloudinary.uploader
+import cloudinary.api
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/5.2/howto/deployment/checklist/
@@ -161,7 +161,7 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Cloudinary - Django integration 
 
 cloudinary.config(
-    cloud_name = "dprxapkef",
-    api_key = "761684916978745",
-    api_secret = "WK5KhGlivCUvz_fqSfCnVVsZRTs",
+    cloud_name = os.getenv('cloud_name'),
+    api_key = os.getenv('api_key'),
+    api_secret = os.getenv('api_secret'),
 )
