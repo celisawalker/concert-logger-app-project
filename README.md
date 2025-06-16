@@ -17,7 +17,7 @@ For the planning of Gig Diary, I created an ERD chart, wireframes, a routing cha
 
 ## App Features
 * Concert Logging - users enter the details of concerts that they have previously attended and included details such as the artist name, date, the venue, location. They can also leave a review so that in the future, they may revisit the entry to see what they did or didn't like about that experience
-* Top artists - users can add a list of their favorite artists and note whether or not this artist is one of their top 5 favorites at the moment. If they are, they will be displayed on the user's concerts index page along with that artist's top five songs according to Spotify. This feature utilizes the Spotify API to dynamically update the tracks based on which artists are marked as a user's top five.
+* Top artists - users can add a list of their favorite artists and note whether or not this artist is one of their top 5 favorites at the moment. If they are, they will be displayed on the user's concerts index page.
 * CRUD functionality - users can create, read, update and delete both concert and artist entries on Gig Diary
 * Image Upload - users can upload images of their concerts to look back on in the future 
 
@@ -34,7 +34,7 @@ For the planning of Gig Diary, I created an ERD chart, wireframes, a routing cha
 * Font: [Google](https://fonts.google.com/)
 * Box Shadow Effect: [FreeFrontend](https://codepen.io/carterfromsl/pen/LYqYRyN)
 * CSS Menu Hover Effect: [FreeFrontend](https://codepen.io/t_afif/pen/bGQOaEb)
-* Spotify API: [Spotify](https://developer.spotify.com/documentation/web-api)
+<!-- * Spotify API: [Spotify](https://developer.spotify.com/documentation/web-api) -->
 
 ## Next Steps
 
