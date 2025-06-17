@@ -4,12 +4,14 @@ from django.views.generic import ListView, DetailView
 from django.contrib.auth import login
 from django.contrib.auth.views import LoginView
 from django.contrib.auth.forms import UserCreationForm
-from .models import Concert, Artist
+from .models import Concert, Artist, Library
 from .tracks import get_songs_by_artist
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
-# Create your views here.
+from django.shortcuts import render, redirect
+from .forms import LibraryForm
 
+# Create your views here
 class Home(LoginView):
     template_name = 'home.html'
 
@@ -58,14 +60,39 @@ def concert_index(request):
         'artists': artists,
         })
 
+
 @login_required
 def concert_detail(request, concert_id):
     concert = Concert.objects.get(id=concert_id)
+    photo_form = LibraryForm()
 
     return render(request, 'concerts/detail.html', {
-        'concert': concert
+        'concert': concert,
+        'photo_form': photo_form,
     })
 
+@login_required
+def add_photo(request, concert_id):
+    # if request.method == 'POST':
+        form = LibraryForm(request.POST, request.FILES)
+
+        if form.is_valid():
+            photo = form.save(commit=False)
+            photo.concert_id = concert_id
+            # photo = Library(image=form.cleaned_data['image'])
+            photo.save()
+
+            # return redirect('concert-detail')
+        
+        else:
+            form = LibraryForm()
+            # return render(request, 'concerts/detail.html', {'form': form})
+        
+        photos = Library.objects.all()
+        return render(request, 'concerts/detail.html', {
+                'form': form,
+                'photos': photos
+        })
 
 class ConcertCreate(LoginRequiredMixin, CreateView):
     model = Concert

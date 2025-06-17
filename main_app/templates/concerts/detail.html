@@ -16,11 +16,28 @@
         <h3>Review:</h3>
         <p>{{concert.review}} </p>
         <h3>Your Photos</h3>
+        <a href="{% url 'artist-create' %}">Add Photos</a>
         <div class="polaroid">
-            <img class="concert-img" src="{{concert.image.url}}" alt="image from the {{concert.artist_name}} concert"><div class="container">
+            <img class="concert-img" src="{{concert.image.url}}" alt="image from the {{concert.artist_name}} concert">
+            <div class="container">
                 <p> {{concert.artist_name}} at {{concert.venue}}</p>
             </div>
         </div>
+        <h3>Add Photos to Your Gallery</h3>
+        <form action="{% url 'add-photo' concert.id %}" method="post" enctype="multipart/form-data">
+            {% csrf_token %}
+            {{ photo_form.as_p }}
+            <button type="submit" class="btn submit">Add Photos</button>
+        </form>
+        <h3>Photo Gallery</h3>
+        {% for photo in concert.library_set.all %}
+        <div class="polaroid">
+            <img class="concert-img" src="{{photo.image.url}}" alt="image from the {{concert.name}} concert">
+            <div class="container">
+                <p> {{concert.name}} at {{concert.venue}}</p>
+            </div>
+        </div>
+        {% endfor %}
         <div class="concert-actions">
             <a href="{% url 'concert-update' concert.id %}" class="btn">Edit</a>
             <a href="{% url 'concert-delete' concert.id %}" class="btn">Delete</a>

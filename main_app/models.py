@@ -1,4 +1,5 @@
 from django.db import models
+from django.urls import reverse
 from django.contrib.auth.models import User
 from cloudinary.models import CloudinaryField
 
@@ -6,7 +7,7 @@ from cloudinary.models import CloudinaryField
 
 # Create your models here.
 class Concert(models.Model):
-    artist_name = models.CharField(max_length=100)
+    name = models.CharField(max_length=100)
     date = models.DateField('Event Date')
     venue = models.CharField(max_length=100)
     location = models.CharField(max_length=50)
@@ -17,6 +18,9 @@ class Concert(models.Model):
 
     def __str__(self):
         return self.name
+    
+    def get_absolute_url(self):
+        return reverse('concert-detail', kwargs={'concert_id': self.id})
 
 
 class Artist(models.Model):
@@ -28,7 +32,11 @@ class Artist(models.Model):
     def __str__(self):
         return self.name
     
-# class Library(models.Model):
-#     title  = models.CharField(max_length=100)
-#     description = models.CharField(max_length=250)
-#     image = CloudinaryField("image")
+class Library(models.Model):
+    description = models.CharField(max_length=250, blank=True, null=True)
+    image = CloudinaryField("image")
+
+    concert = models.ForeignKey(Concert, on_delete=models.CASCADE)
+
+    def __str__(self):
+        return str(self.description)
