@@ -84,17 +84,16 @@ def add_photo(request, concert_id):
             # photo = Library(image=form.cleaned_data['image'])
             photo.save()
 
-            # return redirect('concert-detail')
+            return HttpResponseRedirect(reverse("concert-detail", args=[concert_id]))
+
         else:
             form = LibraryForm()
             
-        return HttpResponseRedirect(reverse("concert-detail", args=[concert_id]))
-
-        # photos = Library.objects.all()
-        # return render(request, f"concerts/{concert_id}/", {
-        #         'form': form,
-        #         'photos': photos
-        # })
+        photos = Library.objects.all()
+        return render(request, 'concerts/detail.html', {
+                'form': form,
+                'photos': photos
+        })
 
 class ConcertCreate(LoginRequiredMixin, CreateView):
     model = Concert
