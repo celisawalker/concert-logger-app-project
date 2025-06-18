@@ -9,6 +9,8 @@ from .tracks import get_songs_by_artist
 from django.contrib.auth.decorators import login_required
 from django.contrib.auth.mixins import LoginRequiredMixin
 from django.shortcuts import render, redirect
+from django.urls import reverse
+from django.http import HttpResponseRedirect
 from .forms import LibraryForm
 
 # Create your views here
@@ -83,16 +85,16 @@ def add_photo(request, concert_id):
             photo.save()
 
             # return redirect('concert-detail')
-        
         else:
             form = LibraryForm()
-            # return render(request, 'concerts/detail.html', {'form': form})
-        
-        photos = Library.objects.all()
-        return render(request, 'concerts/detail.html', {
-                'form': form,
-                'photos': photos
-        })
+            
+        return HttpResponseRedirect(reverse("concert-detail", args=[concert_id]))
+
+        # photos = Library.objects.all()
+        # return render(request, f"concerts/{concert_id}/", {
+        #         'form': form,
+        #         'photos': photos
+        # })
 
 class ConcertCreate(LoginRequiredMixin, CreateView):
     model = Concert
