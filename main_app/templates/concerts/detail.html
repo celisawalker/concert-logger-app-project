@@ -16,7 +16,6 @@
         <h3>Review:</h3>
         <p>{{concert.review}} </p>
         <h3>Your Photos</h3>
-        <a href="{% url 'artist-create' %}">Add Photos</a>
         <div class="polaroid">
             <img class="concert-img" src="{{concert.image.url}}" alt="image from the {{concert.artist_name}} concert">
             <div class="container">
