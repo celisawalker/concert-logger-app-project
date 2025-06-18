@@ -39,6 +39,3 @@ class Library(models.Model):
 
     def __str__(self):
         return str(self.description)
-    
-    # def get_absolute_url(self):
-    #     return reverse('concert-detail', kwargs={'library_id': self.id})

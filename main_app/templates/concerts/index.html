@@ -38,12 +38,7 @@
         {% for artist in artists %}
             {% if artist.top_five == True %}
             <div class="card-contents">
-                <h3>{{artist.name}}</h3>
-                <!-- <ol>
-                    {% for song in artist.top_songs %}
-                    <li>{{ song }}</li>
-                    {% endfor %}
-                </ol> -->
+                <h3>{{artist.name}}</h3> 
             </div>
             {% endif %}
         {% endfor %}
