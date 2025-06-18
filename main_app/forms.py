@@ -6,4 +6,4 @@ class LibraryForm(forms.ModelForm):
     image = CloudinaryFileField()
     class Meta: 
         model = Library
-        fields = ['image']
+        fields = ['description', 'image']
