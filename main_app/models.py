@@ -13,7 +13,6 @@ class Concert(models.Model):
     location = models.CharField(max_length=50)
     seat = models.CharField(max_length=20)
     review = models.TextField(blank=True, null=True)
-    image = CloudinaryField("image")
     user = models.ForeignKey(User, on_delete=models.CASCADE)
 
     def __str__(self):
