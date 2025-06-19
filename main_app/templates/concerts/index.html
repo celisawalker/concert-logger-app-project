@@ -1,6 +1,5 @@
 {% extends 'base.html' %}
 {% load static %}
-{% load cloudinary %}
 
 {% block head %}
 <link rel="stylesheet" href="{% static 'css/concerts/concert-index.css' %}" />
@@ -39,11 +38,6 @@
             {% if artist.top_five == True %}
             <div class="card-contents">
                 <h3>{{artist.name}}</h3>
-                <!-- <ol>
-                    {% for song in artist.top_songs %}
-                    <li>{{ song }}</li>
-                    {% endfor %}
-                </ol> -->
             </div>
             {% endif %}
         {% endfor %}
